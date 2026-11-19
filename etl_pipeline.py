@@ -1,54 +1,4 @@
-# import pandas as pd
-# from sqlalchemy import create_engine
 
-# print("--- STARTING DATA PIPELINE IN VS CODE ---")
-
-# # 1. Create sample DataFrame to simulate data extraction
-# data = {
-#     'employee_id': [1, 2, 3, 4],
-#     'name': ['Alice', 'Bob', 'Charlie', 'Diana'],
-#     'department': ['Engineering', 'Marketing', 'Sales', 'Engineering'],
-#     'salary': [75000, 60000, 55000, 80000]
-# }
-
-# df = pd.DataFrame(data)
-# print("\nOriginal Data:")
-# print(df)
-
-# # 2. Data Cleaning & Transformation (Give Engineering a 10% raise)
-# df.loc[df['department'] == 'Engineering', 'salary'] *= 1.10
-
-# print("\nTransformed Data (After 10% Engineering Raise):")
-# print(df)
-
-# # 3. Write to a local SQLite database file to test SQL integration
-# engine = create_engine('sqlite:///company_test.db')
-# df.to_sql('employees', con=engine, if_exists='replace', index=False)
-
-# # 4. Read it back from the database to verify the load step
-# verify_df = pd.read_sql("SELECT * FROM employees;", con=engine)
-# print("\nData successfully loaded and read back from SQL database:")
-# print(verify_df)
-
-# print("\n--- PIPELINE COMPLETED SUCCESSFULLY ---")
-
-
-
-# import pandas as pd
-
-# # Sample data
-# data = {
-#     'name': ['Alice', 'Bob', 'Charlie', 'Diana'],
-#     'department': ['Engineering', 'Marketing', 'Sales', 'Engineering'],
-#     'salary': [75000, 60000, 55000, 80000]
-# }
-
-# df = pd.DataFrame(data)
-
-# # Here is how you solve it:
-# filtered_df = df[(df['department'] == 'Sales') & (df['salary'] < 80000)]
-
-# print(filtered_df)
 
 import requests
 import pandas as pd
@@ -85,7 +35,7 @@ def transform_weather_data(raw_data, city="London"):
     print("Data transformed successfully!")
     return df
 
-def load_weather_data(df, db_name="weather_data.db"):
+def load_weather_data(df, db_name="weather_pipeline.db"):
     print("Loading data into SQLite database...")
     
     # Connect to (or create) the SQLite database file
